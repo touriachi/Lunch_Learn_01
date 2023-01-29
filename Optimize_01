@@ -1,0 +1,271 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMDvnNhCYBvQhwN732pHW4H",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/touriachi/Lunch_Learn_01/blob/main/Optimize_01\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "\n",
+        "\n",
+        "!python --version"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DFgZA3kfgbLl",
+        "outputId": "a4433986-ca6b-49a3-cd69-20e5bb77fd80"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Python 3.8.10\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!pip install numpy==1.14.0\n",
+        "import numpy as np\n",
+        "print(np.__version__)\n",
+        "\n",
+        "!pip install pandas==1.4.2\n",
+        "import pandas as pd\n",
+        "print(pd.__version__)\n",
+        "\n",
+        "\n",
+        "!pip install scipy==1.7.0\n",
+        "import scipy as sc\n",
+        "print(sc.__version__)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "gGFaj4iDfYBM",
+        "outputId": "3cf52049-c64c-4ff4-95af-0e0a12db3aad"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/\n",
+            "Collecting numpy==1.14.0\n",
+            "  Downloading numpy-1.14.0.zip (4.9 MB)\n",
+            "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m4.9/4.9 MB\u001b[0m \u001b[31m25.9 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[?25h  Preparing metadata (setup.py) ... \u001b[?25l\u001b[?25hdone\n",
+            "Building wheels for collected packages: numpy\n",
+            "  \u001b[1;31merror\u001b[0m: \u001b[1msubprocess-exited-with-error\u001b[0m\n",
+            "  \n",
+            "  \u001b[31m×\u001b[0m \u001b[32mpython setup.py bdist_wheel\u001b[0m did not run successfully.\n",
+            "  \u001b[31m│\u001b[0m exit code: \u001b[1;36m1\u001b[0m\n",
+            "  \u001b[31m╰─>\u001b[0m See above for output.\n",
+            "  \n",
+            "  \u001b[1;35mnote\u001b[0m: This error originates from a subprocess, and is likely not a problem with pip.\n",
+            "  Building wheel for numpy (setup.py) ... \u001b[?25lerror\n",
+            "\u001b[31m  ERROR: Failed building wheel for numpy\u001b[0m\u001b[31m\n",
+            "\u001b[0m\u001b[?25h  Running setup.py clean for numpy\n",
+            "  \u001b[1;31merror\u001b[0m: \u001b[1msubprocess-exited-with-error\u001b[0m\n",
+            "  \n",
+            "  \u001b[31m×\u001b[0m \u001b[32mpython setup.py clean\u001b[0m did not run successfully.\n",
+            "  \u001b[31m│\u001b[0m exit code: \u001b[1;36m1\u001b[0m\n",
+            "  \u001b[31m╰─>\u001b[0m See above for output.\n",
+            "  \n",
+            "  \u001b[1;35mnote\u001b[0m: This error originates from a subprocess, and is likely not a problem with pip.\n",
+            "\u001b[31m  ERROR: Failed cleaning build dir for numpy\u001b[0m\u001b[31m\n",
+            "\u001b[0mFailed to build numpy\n",
+            "Installing collected packages: numpy\n",
+            "  Attempting uninstall: numpy\n",
+            "    Found existing installation: numpy 1.18.5\n",
+            "    Uninstalling numpy-1.18.5:\n",
+            "      Successfully uninstalled numpy-1.18.5\n",
+            "  \u001b[1;31merror\u001b[0m: \u001b[1msubprocess-exited-with-error\u001b[0m\n",
+            "  \n",
+            "  \u001b[31m×\u001b[0m \u001b[32mRunning setup.py install for numpy\u001b[0m did not run successfully.\n",
+            "  \u001b[31m│\u001b[0m exit code: \u001b[1;36m1\u001b[0m\n",
+            "  \u001b[31m╰─>\u001b[0m See above for output.\n",
+            "  \n",
+            "  \u001b[1;35mnote\u001b[0m: This error originates from a subprocess, and is likely not a problem with pip.\n",
+            "  Running setup.py install for numpy ... \u001b[?25l\u001b[?25herror\n",
+            "\u001b[33m  WARNING: No metadata found in /usr/local/lib/python3.8/dist-packages\u001b[0m\u001b[33m\n",
+            "\u001b[0m  Rolling back uninstall of numpy\n",
+            "  Moving to /usr/local/bin/f2py\n",
+            "   from /tmp/pip-uninstall-16yz_ppy/f2py\n",
+            "  Moving to /usr/local/bin/f2py3\n",
+            "   from /tmp/pip-uninstall-16yz_ppy/f2py3\n",
+            "  Moving to /usr/local/bin/f2py3.8\n",
+            "   from /tmp/pip-uninstall-16yz_ppy/f2py3.8\n",
+            "  Moving to /usr/local/lib/python3.8/dist-packages/numpy-1.18.5.dist-info/\n",
+            "   from /usr/local/lib/python3.8/dist-packages/~umpy-1.18.5.dist-info\n",
+            "  Moving to /usr/local/lib/python3.8/dist-packages/numpy.libs/\n",
+            "   from /usr/local/lib/python3.8/dist-packages/~umpy.libs\n",
+            "  Moving to /usr/local/lib/python3.8/dist-packages/numpy/\n",
+            "   from /usr/local/lib/python3.8/dist-packages/~umpy\n",
+            "\u001b[1;31merror\u001b[0m: \u001b[1mlegacy-install-failure\u001b[0m\n",
+            "\n",
+            "\u001b[31m×\u001b[0m Encountered error while trying to install package.\n",
+            "\u001b[31m╰─>\u001b[0m numpy\n",
+            "\n",
+            "\u001b[1;35mnote\u001b[0m: This is an issue with the package mentioned above, not pip.\n",
+            "\u001b[1;36mhint\u001b[0m: See above for output from the failure.\n",
+            "1.18.5\n",
+            "Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/\n",
+            "Requirement already satisfied: pandas==1.4.2 in /usr/local/lib/python3.8/dist-packages (1.4.2)\n",
+            "Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.8/dist-packages (from pandas==1.4.2) (2022.7)\n",
+            "Requirement already satisfied: python-dateutil>=2.8.1 in /usr/local/lib/python3.8/dist-packages (from pandas==1.4.2) (2.8.2)\n",
+            "Requirement already satisfied: numpy>=1.18.5 in /usr/local/lib/python3.8/dist-packages (from pandas==1.4.2) (1.18.5)\n",
+            "Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil>=2.8.1->pandas==1.4.2) (1.15.0)\n",
+            "1.4.2\n",
+            "Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/\n",
+            "Requirement already satisfied: scipy==1.7.0 in /usr/local/lib/python3.8/dist-packages (1.7.0)\n",
+            "Requirement already satisfied: numpy<1.23.0,>=1.16.5 in /usr/local/lib/python3.8/dist-packages (from scipy==1.7.0) (1.18.5)\n",
+            "1.7.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "metadata": {
+        "id": "6o2z0hr0eNGB"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "from scipy.optimize import minimize"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def optimize_portfolio(covariance_matrix, industry_classification, company_identifiers):\n",
+        "    n = covariance_matrix.shape[0]\n",
+        "\n",
+        "    def objective(x):\n",
+        "        return np.sqrt(np.dot(x.T, np.dot(covariance_matrix, x)))\n",
+        "\n",
+        "    def constraint1(x):\n",
+        "           if  (np.sum(x) - 1.0) >= 0 :\n",
+        "               return 1\n",
+        "           else :  \n",
+        "               return 0\n",
+        "        \n",
+        "    def constraint2(x):\n",
+        "        industries = industry_classification['Industry'].unique()\n",
+        "        for industry in industries:\n",
+        "            mask = industry_classification['Industry'] == industry\n",
+        "            if np.sum(x[mask]) > 0.25:\n",
+        "                return 0\n",
+        "        return 1\n",
+        "\n",
+        "    def constraint3(x):\n",
+        "\n",
+        "         if  np.all(x >= 0) and np.all(x <= 0.08) :\n",
+        "            return  1\n",
+        "         else  :\n",
+        "            return 0   \n",
+        "        \n",
+        "\n",
+        "    constraints = [{'type': 'eq', 'fun': constraint1},\n",
+        "                   {'type': 'ineq', 'fun': constraint2},\n",
+        "                   {'type': 'ineq', 'fun': constraint3}]\n",
+        "\n",
+        "    x0 = np.ones(n) / n\n",
+        "    result = minimize(objective, x0, constraints=constraints)\n",
+        "\n",
+        "    optimal_weights = result.x\n",
+        "\n",
+        "    df = pd.DataFrame({'Industry': industry_classification['Industry'],\n",
+        "                       'Optimal Weight': optimal_weights}, index=company_identifiers)\n",
+        "    return df\n"
+      ],
+      "metadata": {
+        "id": "i98Wyxe6eS1z"
+      },
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "l0R7pNxgefGH"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Example data for the covariance matrix\n",
+        "covariance_matrix = pd.DataFrame({'Stock 1': [0.03, 0.02, 0.01],\n",
+        "                                   'Stock 2': [0.02, 0.05, 0.03],\n",
+        "                                   'Stock 3': [0.01, 0.03, 0.04]},\n",
+        "                                  index=['Stock 1', 'Stock 2', 'Stock 3'])\n",
+        "\n",
+        "# Example data for the industry classification\n",
+        "industry_classification = pd.DataFrame({'Industry': ['Technology', 'Finance', 'Finance']},\n",
+        "                                        index=['Stock 1', 'Stock 2', 'Stock 3'])\n",
+        "\n",
+        "# Example list of company identifiers\n",
+        "company_identifiers = ['Stock 1', 'Stock 2', 'Stock 3']\n",
+        "\n",
+        "# Call the optimize_portfolio function\n",
+        "result = optimize_portfolio(covariance_matrix, industry_classification, company_identifiers)\n",
+        "print(result)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9lZ6M7Faefge",
+        "outputId": "cc080989-0533-4be5-c694-02374c33497e"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "           Industry  Optimal Weight\n",
+            "Stock 1  Technology        0.333333\n",
+            "Stock 2     Finance        0.333333\n",
+            "Stock 3     Finance        0.333333\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
